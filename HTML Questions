@@ -1,0 +1,174 @@
+Q1. For Calculator
+
+Code: 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Calculate me! - A calculator made my me</title>
+  <link href="ass.css" rel="stylesheet" type="text/css" />
+  
+</head>
+
+<body>
+  <h1 class="text-center">Welcome to Calculate me!</h1>
+  <div class="container flex flex-col items-center mx-auto m-w-20">
+    <div class="row">
+      <input class="input" type="text"/>
+    </div>
+    <div class="row">
+      <button class="button">C</button>
+      <button class="button">%</button>
+      
+    </div>
+    <div class="row">
+      <button class="button">7</button>
+      <button class="button">8</button>
+      <button class="button">9</button>
+      <button class="button">*</button>
+    </div>
+    <div class="row">
+      <button class="button">4</button>
+      <button class="button">5</button>
+      <button class="button">6</button>
+      <button class="button">/</button>
+    </div>
+    <div class="row">
+      <button class="button">1</button>
+      <button class="button">2</button>
+      <button class="button">3</button>
+      <button class="button">+</button>
+    </div>
+    <div class="row">
+      <button class="button">0</button>
+      <button class="button">.</button>
+      <button class="button">=</button>
+      <button class="button">-</button>
+    </div>
+  </div>
+  <script src="ass.js"></script>
+</body>
+
+</html>
+
+Q2:Create a survey form with Fields; First Name, Last Name, Date of Birth, Country (dropdown), Gender (checkbox), Profession, email, and mobile number. All the input fields are necessary to submit the form. Create two buttons Submit and Reset. Reset will reset the form while clicking on submit, first, it will check all the fields and necessary validations and then a popup will appear displaying all the selected values with labels in front of it. On closing the popup, the form should reset all the values. Use the following image for reference
+HTML  CODE: <!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Survey Form</title>
+</head>
+<body>
+    <div class="heading"> 
+    <h1>Customer Survey Form</h1>
+    <form flex>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required><br><br>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required><br><br>
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" required><br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+            <option value="India">India</option>
+            <option value="Canada">Canada</option>
+            <option value="UK">United Kingdom</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+
+        <label>Gender:</label><br>
+        <input type="checkbox" id="male" name="gender" value="Male">
+        <label for="male">Male</label><br>
+        <input type="checkbox" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br>
+        <input type="checkbox" id="other" name="gender" value="Other">
+        <label for="other">Other</label><br><br>
+
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" name="profession" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" required><br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</div>
+</body>
+</html>
+
+CSS CODE:@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu:wght@300&display=swap');
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif; 
+}
+
+.button{
+  width: 66px;
+  padding: 20px;
+  margin: 0 3px;
+  border: 2px solid black;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.row{
+  margin: 8px 0;
+}
+.row input{
+  width: 291px;
+  font-size: 20px;
+    margin: 0;
+    padding: 10px 0px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.text-center{
+  text-align: center;
+}
+
+.bg-red{
+  background: red;
+}
+
+.mx-auto{
+  margin: auto;
+}
+
+.flex{
+  display:flex;
+} 
+.flex-col{
+  flex-direction: column;
+}
+
+.items-center{
+  align-items: center;
+}
+
+JAVASCRIPT CODE:let string = "";
+let buttons = document.querySelectorAll('.button');
+Array.from(buttons).forEach((button)=>{
+  button.addEventListener('click', (e)=>{
+    if(e.target.innerHTML == '='){
+      string = eval(string);
+      document.querySelector('input').value = string;
+    }
+    else if(e.target.innerHTML == 'C'){
+      string = ""
+      document.querySelector('input').value = string;
+    }
+    else{ 
+    console.log(e.target)
+    string = string + e.target.innerHTML;
+    document.querySelector('input').value = string;
+      }
+  })
+})
